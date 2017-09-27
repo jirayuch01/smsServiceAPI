@@ -1,0 +1,26 @@
+.envelope {
+    border: 1px solid #ddd;
+    width: 70em;
+    height: 25em;
+    position: relative;
+    padding: 1em 1em 1em 2em;
+    box-shadow: 0 .5em 1em rgba(0, 0, 0, .25);
+    font-family: "Segoe Script", "Lucida Handwriting", "Comic Sans", script;
+}
+.envelope::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 1em;
+    background-image: repeating-linear-gradient(45deg, blue 0em, blue .375em, white .375em, white .75em, red .75em, red 1.125em);
+}
+.return {
+    font-size: .8em;
+    margin-left: 1em;
+}
+.recipient {
+    margin-top: 1.5em;
+    margin-left: 12em;
+}
