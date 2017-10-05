@@ -115,6 +115,28 @@ router.post('/show', function (req, res) {
 //   res.render('forget.hbs');
 // });
 
+router.get('/check', function (req, res, next) {
+  User.findById(req.session.userId)
+    .exec(function (error, user) {
+      if (error) {
+        return next(error);
+      } else {
+        if (user === null) {
+          return res.render('errorAuthorized.hbs');
+          // var err = new Error('Not authorized! Go back!');
+          // err.status = 400;
+          // return next(err);
+        } else {
+          return res.render('check.hbs', {
+            username: user.username
+          });
+          //return res.send('<h1>Name: </h1>' + user.username + '<h2>Mail: 
+          //</h2>' + user.email + '<br><a type="button" href="/logout">Logout</a>')
+        }
+      }
+    });
+});
+
 // router.post('/forgets', function (req, res, next) { 
 //   var item = {
 //     email: req.body.email,
@@ -541,52 +563,6 @@ router.post('/create', (req, res) => {
   res.redirect('/show');
 });
 
-// router.get('/send/:id', (req, res) => {
-//   //https://www.intellisoftware.co.uk
-//   var intelliSMS = require('intellisms');
-//   var sms = new intelliSMS('smshospital', 'smsservice');
-//   // console.log(req.body.telno + " " + req.body.msg_data);
-//   //number and message 
-//   var id = req.params.id;
-//   sms.SendMessage({ 
-//     to: "66950193878", 
-//     text: "Hi" 
-//   }, function(err, id) {
-//       if (err) console.log(err);
-//       console.log(id);
-//       //console.log("Send message to " + req.body.fname + " " + req.body.lname + " " + req.body.telno)
-//       res.render('success.hbs');
-//   });
-// });
-
-// router.get('/send/:id', function (req, res, next) {
-//   var data = req.session.userId;
-//   var id = req.params.id;
-//   User.findById(req.session.userId).exec(function (error, user) {
-//     if (data != null && data != undefined) {
-//         //https://www.intellisoftware.co.uk
-//         var intelliSMS = require('intellisms');
-//         var sms = new intelliSMS('smshospital', 'smsservice');
-//         // console.log(req.body.telno + " " + req.body.msg_data);
-//         //number and message 
-//         var id = req.params.id;
-//         sms.SendMessage({ 
-//           to: "66950193878", 
-//           text: "Hi" 
-//         }, function(err, id) {
-//             if (err) console.log(err);
-//             console.log(id);
-//             //console.log("Send message to " + req.body.fname + " " + req.body.lname + " " + req.body.telno)
-//             res.render('success.hbs', {
-//               username: user.username
-//             });
-//         });
-//     } else {
-//       res.render('errorAuthorized.hbs');
-//     }
-//   });
-// });
-
 router.get('/send/:id', function (req, res, next) {
   var data = req.session.userId;
   var id = req.params.id;
@@ -605,18 +581,18 @@ router.get('/send/:id', function (req, res, next) {
           console.log(result.meg);
           //https://www.intellisoftware.co.uk
           var intelliSMS = require('intellisms');
-          var sms = new intelliSMS('smsAPI', 'smsAPI');
-          // console.log(req.body.telno + " " + req.body.msg_data);
+          var sms = new intelliSMS('smsWebAPI', 'smsWebAPI');
+          // console.log(req.body.telno + " " + req.body.meg);
           //number and message 
           sms.SendMessage({
             to: result.tel,
             text: result.meg
           }, function (err, id) {
             if (err) console.log(err);
-            //console.log("Send message to " + req.body.fname + " " + req.body.lname + " " + req.body.telno)
-            res.render('success.hbs', {
-              result: result,
-              username: user.username
+             console.log("Send message to " + req.body.first + " " + req.body.last + " " + req.body.tel)
+             res.render('success.hbs', {
+               result: result,
+               username: user.username
             });
           });
         })
@@ -641,14 +617,14 @@ router.get('/delete/:id', function (req, res, next) {
   });
 });
 
-// router.get('/deleteall', function (req, res, next) {
-//   MongoClient.connect('mongodb://localhost:27017/forAuth', (err, db) => {
-//     db.collection('test').remove({}, function (err, removed) {
-//       res.redirect('/show');
-//       db.close();
-//     });
-//   });
-// });
+router.get('/deleteall', function (req, res, next) {
+  MongoClient.connect('mongodb://localhost:27017/forAuth', (err, db) => {
+    db.collection('test').remove({}, function (err, removed) {
+      res.redirect('/show');
+      db.close();
+    });
+  });
+});
 
 router.get('/fetchdata/:id', function (req, res, next) {
   var data = req.session.userId;

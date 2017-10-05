@@ -82,6 +82,14 @@
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="########">Change Password</a></li>
             </ul>
+          </li> --}} 
+          {{!-- <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                 <span class="glyphicon glyphicon-user"></span>
+                 {{ username }}
+                  <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/check">Ckeck credit</a></li>
+            </ul>
           </li> --}}
           <li><a href="#"><span class="glyphicon glyphicon-user"></span> {{ username }}</a></li>
           <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
@@ -188,19 +196,20 @@
               <strong>Warning!</strong> There was a problem with your network connection. &nbsp; <br>
               1. Change number 0 to 66 <br>
               2. The system can only send 10 messages. <br>
-              <a target="_blank" href="intellisoftware.co.uk">Reference: https://www.intellisoftware.co.uk</a>
+              Reference:<a target="_blank" href="https://www.intellisoftware.co.uk"> intellisoftware.co.uk</a>
           </div>
       </div>          
     </div>
   </div> 
-  {{!-- <div id="outer">
-    <div class="inner">
+  <div id="outer">
+    {{!-- <div class="inner">
       <a href="/sendall"><button class="btn btn-success btn-xs">
          <span class="glyphicon glyphicon-ok"> Send all SMS</span></button></a>              
-    </div>
+    </div> --}}
+    <br>
     <div class="inner">
       <p data-placement="top" data-toggle="tooltip" title="DeleteAll">
-        <button class="btn btn-danger btn-xs" data-title="DeleteAll" data-toggle="modal" data-target="#deleteall"><span class="glyphicon glyphicon-trash"> Delete all contact</span></button></p>
+        <button class="btn btn-danger btn-lg" data-title="DeleteAll" data-toggle="modal" data-target="#deleteall"><span class="glyphicon glyphicon-trash"> Delete all contact</span></button></p>
       <div class="modal fade" id="deleteall" tabindex="-1" role="dialog" aria-labelledby="deleteall" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -219,15 +228,19 @@
         </div>
       </div>
     </div>
-  </div> --}}
-  <div class="row" style="padding-top: -15px; width: 100%; display: inline-block">
+  </div> 
+  <div class="row" style="padding-top: 205px; width: 100%; display: inline-block">
     <div class="copyright">
-      <p style="color:black">Copyright &copy; 2017 | Developed by <a href="https://web.facebook.com/JIch01beer" target="_blank" style="color:orange">
-				 Jirayu Chinnawong </a>
-        <br>Information Technology | Faculty of Technology and Environment | Prince of Songkla University, Phuket Campus
-      </p>
+        <p style="color:black">Copyright &copy; 2017 | Developed by
+          <a href="https://web.facebook.com/JIch01beer" target="_blank" style="color:orange">
+            Jirayu Chinnawong </a>
+            <br>Information Technology | Faculty of Technology and Environment | 
+            Prince of Songkla University, Phuket Campus<br>
+            Email: jirayu_ch01@hotmail.com | Tel: (+66)95019-3878 |
+            Github: <a href="https://github.com/jirayuch01/" target="_blank" style="color:orange">  @jirayuch01  </a>
+        </p>
     </div>
-  </div>
+</div>
   <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="create" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">

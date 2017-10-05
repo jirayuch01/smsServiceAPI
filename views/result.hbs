@@ -82,6 +82,14 @@
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="########">Change Password</a></li>
             </ul>
+          </li> --}} 
+          {{!-- <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                 <span class="glyphicon glyphicon-user"></span>
+                 {{ username }}
+                  <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/check">Ckeck credit</a></li>
+            </ul>
           </li> --}}
           <li><a href="#"><span class="glyphicon glyphicon-user"></span> {{ username }}</a></li>
           <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
@@ -180,10 +188,10 @@
   </div>
   <br>
   <div id="outer">
-    <div class="inner">
+    {{!-- <div class="inner">
       <p data-placement="top" data-toggle="tooltip" title="Send">
         <button class="btn btn-success btn-xs" data-title="Send" data-toggle="modal" data-target="#send"><span class="glyphicon glyphicon-ok"> Send all SMS</span></button></p>
-    </div>
+    </div> --}}
     <div class="inner">
       <p data-placement="top" data-toggle="tooltip" title="DeleteAll">
         <button class="btn btn-danger btn-xs" data-title="DeleteAll" data-toggle="modal" data-target="#deleteall"><span class="glyphicon glyphicon-trash"> Delete all contact</span></button></p>
@@ -206,14 +214,18 @@
       </div>
     </div>
   </div>
-  <div class="row" style="padding-top: 50px; width: 100%; display: inline-block">
+  <div class="row" style="padding-top: 205px; width: 100%; display: inline-block">
     <div class="copyright">
-      <p style="color:black">Copyright &copy; 2017 | Developed by <a href="https://web.facebook.com/JIch01beer" target="_blank" style="color:orange">
-				 Jirayu Chinnawong </a>
-        <br>Information Technology | Faculty of Technology and Environment | Prince of Songkla University, Phuket Campus
-      </p>
+        <p style="color:black">Copyright &copy; 2017 | Developed by
+          <a href="https://web.facebook.com/JIch01beer" target="_blank" style="color:orange">
+            Jirayu Chinnawong </a>
+            <br>Information Technology | Faculty of Technology and Environment | 
+            Prince of Songkla University, Phuket Campus<br>
+            Email: jirayu_ch01@hotmail.com | Tel: (+66)95019-3878 |
+            Github: <a href="https://github.com/jirayuch01/" target="_blank" style="color:orange">  @jirayuch01  </a>
+        </p>
     </div>
-  </div>
+</div>
   <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="create" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
