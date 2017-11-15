@@ -38,12 +38,6 @@ app.use('/send/', express.static(__dirname + '/templateLogReg'));
 var routes = require('./routes/router');
 app.use('/', routes);
 
-// app.use(function (req, res, next) {
-//   var err = new Error('File Not Found');
-//   err.status = 404;
-//   next(err);
-// });
-
 app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.send(err.message);

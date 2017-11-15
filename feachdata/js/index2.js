@@ -2,7 +2,6 @@
 //     document.getElementById("uploadFile").value = this.value;
 // };
 
-
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-36251023-1']);
 _gaq.push(['_setDomainName', 'jqueryscript.net']);
