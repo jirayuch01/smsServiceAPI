@@ -53,6 +53,5 @@
   "bugs": {
     "url": "https://github.com/jirayuch01/smsServiceAPI/issues"
   },
-  "homepage": "https://github.com/jirayuch01/smsServiceAPI#readme",
-  "main": "server.js"
+  "homepage": "https://github.com/jirayuch01/smsServiceAPI#readme"
 }
