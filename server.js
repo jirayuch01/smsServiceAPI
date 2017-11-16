@@ -8,7 +8,10 @@ var hbs = require('hbs');
 var morgan = require('morgan');
 var fs = require('fs');
 
-mongoose.connect('mongodb://localhost/forAuth');
+//mongoose.connect('mongodb://localhost/forAuth');
+mongoose.connect('mongodb://Beerkurai1412:nanoha1412@ds111336.mlab.com:11336/smsservice', {useMongoClient: true});
+mongoose.connection.on('error', console.error.bind(console, 'Connection error:'));
+
 var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));

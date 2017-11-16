@@ -1,13 +1,9 @@
 {
   "name": "smsServiceAPI",
-  "version": "1.0.0",
-  "main": "index.js",
-  "repository": "",
-  "author": "",
-  "license": "none",
+  "version": "2.0.0",
+  "private": true,
   "scripts": {
-    "start": "nodemon app",
-    "watch": "nodemon app && mongod"
+    "start": "nodemon server.js"
   },
   "dependencies": {
     "assert": "^1.4.1",
@@ -35,5 +31,28 @@
     "xls-to-json-lc": "^0.3.4",
     "xlsx-to-json-lc": "^0.5.0",
     "xml2js": "^0.4.19"
-  }
+  },
+  "description": "Project with NodeJS / Express / MongoDB <br>",
+  "keywords": [
+    "express",
+    "mongoDB",
+    "heroku"
+  ],
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  },
+  "engines": {
+    "node": "8.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jirayuch01/smsServiceAPI.git"
+  },
+  "author": "Jirayu Chinnawong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jirayuch01/smsServiceAPI/issues"
+  },
+  "homepage": "https://github.com/jirayuch01/smsServiceAPI#readme",
+  "main": "server.js"
 }

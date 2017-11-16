@@ -1,13 +1,11 @@
 # smsServiceAPI
 Project with NodeJS / Express / MongoDB <br>
-run use command is node start or nodemon start.
 
 # Page
-Homepage: https://ei-jishopping.herokuapp.com/  <br>
-Git: https://git.heroku.com/ei-jishopping.git <br>
-or https://github.com/jirayuch01/Ei-JiShopping <br>
-mongoDB: https://mlab.com/databases/ei-jishopping <br>
-Stripe: https://stripe.com/ 
+Homepage: https://sms-services.herokuapp.com/ <br>
+Git: https://git.heroku.com/sms-services.git <br>
+or https://github.com/jirayuch01/smsServiceAPI <br>
+mongoDB: https://mlab.com/databases/smsservice <br>
 
 # Reference
 Heroku: https://dashboard.heroku.com/ <br>

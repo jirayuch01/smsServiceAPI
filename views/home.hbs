@@ -73,7 +73,7 @@
             <a href="/home">
               <span class="glyphicon glyphicon-home"></span> Home</a>
           </li>
-          <li class="dropdown">
+          <li class="dropdown hidden">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <span class="glyphicon glyphicon-phone"></span> SMS service
               <span class="caret"></span>
@@ -100,7 +100,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <a class="active" style="background-color: pink; color: black" class="dropdown-item" href="/profile">
+            <a class="active" style="background-color: pink; color: black" class="dropdown-item" href="/home">
               <span class="glyphicon glyphicon-user"></span> Profile</a>
           </li>
           <li>
@@ -253,7 +253,7 @@
       var form = this;
       setTimeout(function () {
         form.submit();
-        window.location.href = '/user';
+  
       }, 3000);
       return false;
     });
