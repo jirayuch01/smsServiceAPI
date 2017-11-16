@@ -18,8 +18,24 @@
 		}
   </script>
   <style>
-    body {
-      background-color: orange;
+    #myDIV {
+      width: 100%;
+      padding: 50px 0;
+      text-align: center;
+      background-color: pink;
+      margin-top: 20px;
+    }
+
+    #myDIV2 {
+      width: 100%;
+      padding: 10px 0;
+      text-align: center;
+      background-color: azure;
+      margin-top: 20px;
+    }
+
+    .hidden {
+      display: none;
     }
   </style>
   <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
@@ -33,6 +49,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
   <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="css/cursor.css">
 </head>
 
 <body>
@@ -46,14 +63,14 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/home">
+        <a class="navbar-brand" href="#">
           <img src="images/sms.png" style="width: 60px; height: 40px; margin: -8px;">
         </a>
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li>
-            <a class="active" style="background-color: pink; color: black" href="/home">
+          <li class="hidden">
+            <a href="/home">
               <span class="glyphicon glyphicon-home"></span> Home</a>
           </li>
           <li class="dropdown">
@@ -83,7 +100,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <a class="dropdown-item" href="/profile">
+            <a class="active" style="background-color: pink; color: black" class="dropdown-item" href="/profile">
               <span class="glyphicon glyphicon-user"></span> Profile</a>
           </li>
           <li>
@@ -99,10 +116,12 @@
     <div class="col-6">
       <div class="wrapper">
         <div class="container">
-          <center>
-            <h1 style="color: brown">Please fill in the information.</h1>
-            <span>check the information before use.</span>
-          </center>
+          <div id="myDIV">
+            <center>
+              <h1 style="color: brown">Please fill in the information.</h1>
+              <span>check the information before use.</span>
+            </center>
+          </div>
           <br>
           <br>
           <div class="alert alert-success">
@@ -161,15 +180,17 @@
       </div>
     </div>
   </div>
-  <div class="row" style="padding-top: 205px; width: 100%; display: inline-block">
-    <div class="copyright">
-      <p style="color:black">Copyright &copy; 2017 | Developed by
-        <a href="https://web.facebook.com/JIch01beer" target="_blank" style="color:orange">
-          Jirayu Chinnawong </a>
-        <br>Information Technology | Faculty of Technology and Environment | Prince of Songkla University, Phuket Campus
-        <br> Email: jirayu_ch01@hotmail.com | Tel: (+66)95019-3878 | Github:
-        <a href="https://github.com/jirayuch01/" target="_blank" style="color:orange"> @jirayuch01 </a>
-      </p>
+  <div id="myDIV2">
+    <div class="row" style="padding-top: 120px; width: 100%; display: inline-block">
+      <div class="copyright">
+        <p style="color:black">Copyright &copy; 2017 | Developed by
+          <a href="https://web.facebook.com/JIch01beer" target="_blank" style="color:orange">
+            Jirayu Chinnawong </a>
+          <br>Information Technology | Faculty of Technology and Environment | Prince of Songkla University, Phuket Campus
+          <br> Email: jirayu_ch01@hotmail.com | Tel: (+66)95019-3878 | Github:
+          <a href="https://github.com/jirayuch01/" target="_blank" style="color:orange"> @jirayuch01 </a>
+        </p>
+      </div>
     </div>
   </div>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
@@ -232,6 +253,7 @@
       var form = this;
       setTimeout(function () {
         form.submit();
+        window.location.href = '/user';
       }, 3000);
       return false;
     });

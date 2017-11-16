@@ -179,8 +179,7 @@ router.get('/show', function (req, res, next) {
         db.collection('test').find().toArray(function (err, docs) {
           if (err) throw err;
           res.render('show.hbs', {
-            data: docs,
-            username: user.username
+            data: docs
           });
           db.close();
         });
@@ -511,17 +510,17 @@ router.get('/logout', function (req, res, next) {
   }
 });
 
-
 router.post('/create', (req, res) => {
   var item = {
     first: req.body.first,
     last: req.body.last,
     tel: req.body.tel,
+    mobile: req.body.mobile,
     meg: req.body.meg
   };
   MongoClient.connect('mongodb://localhost:27017/forAuth', (err, db) => {
     assert.equal(null, err);
-    db.collection('test').insertOne(item, function (err, result) {
+    db.collection('test').update({ tel: req.body.tel }, { $set: item }, { upsert: true }, function (err, result) {
       assert.equal(null, err);
       console.log('Item inserted');
       db.close();
@@ -529,8 +528,6 @@ router.post('/create', (req, res) => {
   });
   res.redirect('/show');
 });
-
-
 
 router.get('/send/:id', function (req, res, next) {
   var data = req.session.userId;
@@ -548,21 +545,6 @@ router.get('/send/:id', function (req, res, next) {
           db.close();
           console.log(result.tel);
           console.log(result.meg);
-
-          // var intelliSMS = require('intellisms');
-          // var sms = new intelliSMS('smsWebAPI', 'smsWebAPI');
-          // sms.SendMessage({
-          //   to: result.tel,
-          //   text: result.meg
-          // }, function (err, id) {
-          //   if (err) console.log(err);
-          //   console.log("Send message to " + req.body.first + " " + req.body.last + " " + req.body.tel)
-          //   res.render('success.hbs', {
-          //     result: result,
-          //     username: user.username
-          //   });
-          // });
-
         })
         console.log(req.params.id);
       });
@@ -634,6 +616,7 @@ router.post('/edit', (req, res) => {
           first: req.body.first,
           last: req.body.last,
           tel: req.body.tel,
+          mobile: req.body.mobile,
           meg: req.body.meg
         }
       }, function (err, results) {

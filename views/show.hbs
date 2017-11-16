@@ -26,9 +26,29 @@
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
+  <link rel="stylesheet" href="css/cursor.css">
   <style>
-    .button {
+    .hidden {
+      display: none;
+    }
 
+    #myDIV3 {
+      width: 100%;
+      padding: 50px 0;
+      text-align: center;
+      background-color: pink;
+      margin-top: 20px;
+    }
+
+    #myDIV4 {
+      width: 100%;
+      padding: 10px 0;
+      text-align: center;
+      background-color: azure;
+      margin-top: 20px;
+    }
+
+    .button {
       width: 115px;
       height: 25px;
       background: #4E9CAF;
@@ -51,227 +71,717 @@
     .inner {
       display: inline-block;
     }
+
+    .breadcrumb {
+      list-style: none;
+      overflow: hidden;
+      font: 18px Helvetica, Arial, Sans-Serif;
+      margin: 40px;
+      padding: 0;
+    }
+
+    .breadcrumb li {
+      float: left;
+    }
+
+    .breadcrumb li a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 0 10px 55px;
+      background: brown;
+      background: hsla(34, 85%, 35%, 1);
+      position: relative;
+      display: block;
+      float: left;
+    }
+
+    .breadcrumb li a:after {
+      content: " ";
+      display: block;
+      width: 0;
+      height: 0;
+      border-top: 50px solid transparent;
+      border-bottom: 50px solid transparent;
+      border-left: 30px solid hsla(34, 85%, 35%, 1);
+      position: absolute;
+      top: 50%;
+      margin-top: -50px;
+      left: 100%;
+      z-index: 2;
+    }
+
+    .breadcrumb li a:before {
+      content: " ";
+      display: block;
+      width: 0;
+      height: 0;
+      border-top: 50px solid transparent;
+      border-bottom: 50px solid transparent;
+      border-left: 30px solid white;
+      position: absolute;
+      top: 50%;
+      margin-top: -50px;
+      margin-left: 1px;
+      left: 100%;
+      z-index: 1;
+    }
+
+    .breadcrumb li:first-child a {
+      padding-left: 10px;
+    }
+
+    .breadcrumb li:nth-child(2) a {
+      background: hsla(34, 85%, 45%, 1);
+    }
+
+    .breadcrumb li:nth-child(2) a:after {
+      border-left-color: hsla(34, 85%, 45%, 1);
+    }
+
+    .breadcrumb li:nth-child(3) a {
+      background: hsla(34, 85%, 55%, 1);
+    }
+
+    .breadcrumb li:nth-child(3) a:after {
+      border-left-color: hsla(34, 85%, 55%, 1);
+    }
+
+    .breadcrumb li:nth-child(4) a {
+      background: hsla(34, 85%, 65%, 1);
+    }
+
+    .breadcrumb li:nth-child(4) a:after {
+      border-left-color: hsla(34, 85%, 65%, 1);
+    }
+
+    .breadcrumb li:nth-child(5) a {
+      background: hsla(34, 85%, 75%, 1);
+    }
+
+    .breadcrumb li:nth-child(5) a:after {
+      border-left-color: hsla(34, 85%, 75%, 1);
+    }
+
+    .breadcrumb li:last-child a {
+      background: transparent !important;
+      color: black;
+      pointer-events: none;
+      cursor: default;
+    }
+
+    .breadcrumb li:last-child a:after {
+      border: 0;
+    }
+
+    .breadcrumb li a:hover {
+      background: hsla(34, 85%, 25%, 1);
+    }
+
+    .breadcrumb li a:hover:after {
+      border-left-color: hsla(34, 85%, 25%, 1) !important;
+    }
   </style>
 </head>
 
 <body>
-      <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-                    aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/home">
-                    <img src="images/sms.png" style="width: 60px; height: 40px; margin: -8px;">
-                </a>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a class="active" href="/home">
-                            <span class="glyphicon glyphicon-home"></span> Home</a>
-                    </li>
-                    <li class="dropdown">
-                        <a style="background-color: pink; color: black" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                            aria-expanded="false">
-                            <span class="glyphicon glyphicon-phone"></span> SMS service
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-header">one person</li>
-                            <li>
-                                <a href="/user">SMS form</a>
-                            </li>
-                            <li role="separator" class="divider"></li>
-                            <li class="dropdown-header">multiple person</li>
-                            <li>
-                                <a href="/upload">Upload file</a>
-                            </li>
-                            <li>
-                                <a href="/show">Contact list</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="/contact">
-                            <span class="glyphicon glyphicon-envelope"></span> Contact</a>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a class="dropdown-item" href="/profile">
-                            <span class="glyphicon glyphicon-user"></span> Profile</a>
-                    </li>
-                    <li>
-                        <a href="/logout">
-                            <span class="glyphicon glyphicon-log-in"></span> Logout</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-  <br>
-  <div class="table-users">
-    <div class="header">
-      Contact list<br>
-      <p></p>
-      <form action="/search" method="post">
-        <div class="row">
-          <center>
-            <div class="col-sm-3" style="width: 30%;">
-              <select id="soflow-color" name="select" style="font-color: black; font-size: 16px; width: 80%;">   
-                <option value="first" name="first" id="first">First Name</option>
-                <option value="last"  name="last"  id="last">Last name</option>
-                <option value="tel"   name="tel"   id="tel">Telephone</option>
-                <option value="meg"   name="meg"   id="meg">Message</option>             
-              </select>
-            </div>
-            <div class="col-sm-6">
-              <div class="input-group">
-                <input class="form-control" type="text" id="search" name="search" required>
-                <span class="input-group-btn">
-                <button type="submit" class="btn btn-default">
-               <i class="glyphicon glyphicon-search"></i>
-             </button></span></div>
-            </div>
-      </form>
-      <div class="col-sm-3" style="width: 7%;">
-        <button type="button" class="btn btn-primary btn-create" data-title="Create" data-toggle="modal" data-target="#create">
-          <span class="glyphicon glyphicon-edit"></span> Create New</button>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+          aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+          <img src="images/sms.png" style="width: 60px; height: 40px; margin: -8px;">
+        </a>
       </div>
-      </center>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="hidden">
+            <a class="active" href="/home">
+              <span class="glyphicon glyphicon-home"></span> Home</a>
+          </li>
+          <li class="dropdown">
+            <a style="background-color: pink; color: black" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+              aria-expanded="false">
+              <span class="glyphicon glyphicon-phone"></span> SMS service
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">one person</li>
+              <li>
+                <a href="/user">SMS form</a>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">multiple person</li>
+              <li>
+                <a href="/upload">Upload file</a>
+              </li>
+              <li>
+                <a href="/show">Contact list</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="/contact">
+              <span class="glyphicon glyphicon-envelope"></span> Contact</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a class="dropdown-item" href="/profile">
+              <span class="glyphicon glyphicon-user"></span> Profile</a>
+          </li>
+          <li>
+            <a href="/logout">
+              <span class="glyphicon glyphicon-log-in"></span> Logout</a>
+          </li>
+        </ul>
       </div>
     </div>
-    <table cellspacing="0">
-      <tr>
-        <th width="130">
-          <center>First Name</center>
-        </th>
-        <th width="130">
-          <center>Last Name</center>
-        </th>
-        <th width="130">
-          <center>Telephone number</center>
-        </th>
-        <th width="200">
-          <center>Message</center>
-        </th>
-        <th width="60">Send SMS</th>
-        <th width="60">&nbsp; Edit</th>
-        <th width="60">Delete</th>
-      </tr>
-      {{#each data}}
-      <tr>
-        <td width="25">{{first}}</td>
-        <td width="25">{{last}}</td>
-        <td width="12" name="tel" id="tel">{{tel}}</td>
-        <td width="100" name="meg" id="meg">{{meg}}</td>
-        <td>
-            <a href="/send/{{_id}}"><button class="btn btn-success btn-xs">
-            <span class="glyphicon glyphicon-ok"></span></button></a>            
-        </td>
-        <td>
-          <a href="/fetchdata/{{_id}}"><button class="btn btn-primary btn-xs">
-            <span class="glyphicon glyphicon-pencil"></span></button></a>
-        </td>
-        <td>
-          <p data-placement="top" data-toggle="tooltip" title="Delete">
-            <button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete">
-              <span class="glyphicon glyphicon-trash"></span></button></p>
-          <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
+  </nav>
+  <br>
+
+  <ul class="breadcrumb">
+    <li>
+      <a href="#" onclick="return myFunction();">Step 1:
+        <span>check username</span>
+      </a>
+    </li>
+    <li>
+      <a href="#" onclick="return myFunction2();">Step 2:
+        <span>send sms</span>
+      </a>
+    </li>
+    <li>
+      <a href="#">Funushed</a>
+    </li>
+  </ul>
+  <div id="myDIV">
+    <div class="row">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-4">
+        <div class="wrapper">
+          <div class="container">
+            <br>
+            <br>
+            <div class="row">
+              <div class="modal-content col-lg-6">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                  <h4 class="modal-title custom_align" id="Heading">Delete contact</h4>
+                  <h4 class="modal-title custom_align" id="Heading">
+                    <b>
+                      SMS Service</b>
+                  </h4>
                 </div>
                 <div class="modal-body">
-                  <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this contact?</div>
+                  <div class="form-group">
+                    Username
+                    <input class="form-control SMSusername" type="text" id="SMSusername" name="SMSusername" value="" required>
+                  </div>
+                  <div class="form-group">
+                    Password
+                    <input class="form-control SMSpassword" type="password" id="SMSpassword" name="SMSpassword" value="" required>
+                  </div>
+                  <div class="form-group">
+                    Credit Type
+                    <select class="form-control force" id="force" name="force">
+                      <option value="standard" selected="selected">Standard</option>
+                      <option value="premium">Premium</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    Sender Name
+                    <select class="form-control sender" id="sender" name="sender">
+                      <option value="THAIBULKSMS" selected="selected">THAIBULKSMS</option>
+                    </select>
+                  </div>
+                  <div class="ScheduledDelivery" id="ScheduledDelivery" style="display: none;"></div>
+                  {{!-- --}}
                 </div>
                 <div class="modal-footer">
-                  <a class="button" href="/delete/{{_id}}"><span class="glyphicon glyphicon-ok-sign"></span> Yes</a>
-                  <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+                  <center>
+                    <button class="btn btn-success btn-lg" style="width: 100%;" name="btnButton" id="btnButton" type="button" onClick="myFunction();">
+                      Next Step
+                      <span class="badge">
+                        <span class="glyphicon glyphicon-forward"></span>
+                      </span>
+                    </button>
+                  </center>
                 </div>
               </div>
             </div>
           </div>
-      </tr>
-      {{/each}}
-    </table>
-  </div>
-  <br><br>
-  <div id="outer">
+        </div>
+      </div>
+      <div class="col-lg-3"></div>
+    </div>
     <br>
-    <div class="inner">
-      <p data-placement="top" data-toggle="tooltip" title="DeleteAll">
-        <button class="btn btn-danger btn-lg" data-title="DeleteAll" data-toggle="modal" data-target="#deleteall"><span class="glyphicon glyphicon-trash"> Delete all contact</span></button></p>
-      <div class="modal fade" id="deleteall" tabindex="-1" role="dialog" aria-labelledby="deleteall" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-              <h4 class="modal-title custom_align" id="Heading">Delete all contact</h4>
-            </div>
-            <div class="modal-body">
-              <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete all contact?</div>
-            </div>
-            <div class="modal-footer">
-              <a class="button" href="/deleteall"><span class="glyphicon glyphicon-ok-sign"></span> Yes</a>
-              <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+    <br>
+    <br>
+    <ul class="breadcrumb">
+      <li>
+        <a href="#" onclick="return myFunction();">Step 1:
+          <span>check username</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" onclick="return myFunction2();">Step 2:
+          <span>send sms</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">Funushed</a>
+      </li>
+    </ul>
+  </div>
+
+  <div id="myDIV2" style="display: none">
+    <center>
+      <h1 style="color: red">
+        If no contacts are shown,
+        <br>Please refash page or press F5 again.</h1>
+    </center>
+    <br>
+    <br>
+    <div class="container">
+      <div class="alert alert-info">
+        <strong>Message! </strong>
+        <span id="mySpan" style="color: red"></span>
+      </div>
+    </div>
+    <div class="table-users">
+      <div class="header">
+        Contact list
+        <br>
+        <p></p>
+        {{!--
+        <form action="/search" method="post"> --}}
+          <div class="row">
+            <center>
+              <div class="col-sm-3" style="width: 30%;">
+                {{!--
+                <select id="soflow-color" name="select" style="font-color: black; font-size: 16px; width: 80%;">
+                  <option value="first" name="first" id="first">First Name</option>
+                  <option value="last" name="last" id="last">Last name</option>
+                  <option value="tel" name="tel" id="tel">Telephone</option>
+                  <option value="meg" name="meg" id="meg">Message</option>
+                </select> --}}
+              </div>
+              <div class="col-sm-6">
+                <div class="input-group">
+                  {{!--
+                  <input class="form-control" type="text" id="search" name="search" required>
+                  <span class="input-group-btn">
+                    <button type="submit" class="btn btn-default">
+                      <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                  </span> --}}
+                </div>
+              </div>
+              {{!-- </form> --}}
+        <div class="col-sm-3" style="width: 7%;">
+          <button type="button" class="btn btn-primary btn-create" data-title="Create" data-toggle="modal" data-target="#create">
+            <span class="glyphicon glyphicon-edit"></span> Create New</button>
+        </div>
+        </center>
+        </div>
+      </div>
+      <table cellspacing="0" id="choose-address-table">
+        <thead>
+          <tr>
+            <th width="128" style="font-weight: bold;">
+              <center>
+                <strong> First Name </strong>
+              </center>
+            </th>
+            <th width="128" style="font-weight: bold;">
+              <center>
+                <strong> Last Name </strong>
+              </center>
+            </th>
+            <th width="120" style="font-weight: bold;">
+              <center>
+                <strong> Telephone</strong>
+              </center>
+            </th>
+            <th width="100" style="font-weight: bold;">
+              <center>
+                <strong> Mobile</strong>
+              </center>
+            </th>
+            <th width="100" style="font-weight: bold;">
+              <center>
+                <strong> Message</strong>
+              </center>
+            </th>
+            <th width="60" style="font-weight: bold;">
+              <strong> Send</strong>
+            </th>
+            <th width="60" style="font-weight: bold;">&nbsp;
+              <strong> Edit</strong>
+            </th>
+            <th width="60" style="font-weight: bold;">
+              <strong> Delete</strong>
+            </th>
+          </tr>
+        </thead>
+        {{#each data}}
+        <tbody>
+          <tr>
+            <td width="25">
+              <span> {{ first }} </span>
+            </td>
+            <td width="25">
+              <span> {{ last }} </span>
+            </td>
+            <td width="12">
+              <span class="msisdn" name="tel" id="tel"> {{ tel }} </span>
+            </td>
+            <td width="25">
+              <span> {{ mobile }} </span>
+            </td>
+            <td width="100">
+              <span class="message" name="meg" id="meg"> {{ meg }} </span>
+            </td>
+            <td>
+              <button class="btn btn-success btn-xs use-sms">
+                <span class="glyphicon glyphicon-envelope"></span>
+              </button>
+            </td>
+            <td>
+              <a href="/fetchdata/{{_id}}">
+                <button class="btn btn-primary btn-xs">
+                  <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+              </a>
+            </td>
+            <td>
+              <p data-placement="top" data-toggle="tooltip" title="Delete">
+                <button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete">
+                  <span class="glyphicon glyphicon-trash"></span>
+                </button>
+              </p>
+              <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                      </button>
+                      <h4 class="modal-title custom_align" id="Heading">Delete contact</h4>
+                    </div>
+                    <div class="modal-body">
+                      <div class="alert alert-danger">
+                        <span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this contact?</div>
+                    </div>
+                    <div class="modal-footer">
+                      <a class="button" href="/delete/{{_id}}">
+                        <span class="glyphicon glyphicon-ok-sign"></span> Yes</a>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">
+                        <span class="glyphicon glyphicon-remove"></span> No</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </tr>
+        </tbody>
+        {{/each}}
+      </table>
+    </div>
+    <br>
+    <br>
+    <div id="outer">
+      <br>
+      <div class="inner">
+        <p data-placement="top" data-toggle="tooltip" title="DeleteAll">
+          <button class="btn btn-danger btn-lg" data-title="DeleteAll" data-toggle="modal" data-target="#deleteall">
+            <span class="glyphicon glyphicon-trash"> Delete all contact</span>
+          </button>
+        </p>
+        <button class="btn btn-success btn-lg" style="width: 100%;" name="btnButton" id="btnButton" type="button" onClick="myFunction();">
+          <span class="badge">
+            <span class="glyphicon glyphicon-backward"></span>
+          </span>
+          Back Step
+        </button>
+        <div class="modal fade" id="deleteall" tabindex="-1" role="dialog" aria-labelledby="deleteall" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </button>
+                <h4 class="modal-title custom_align" id="Heading">Delete all contact</h4>
+              </div>
+              <div class="modal-body">
+                <div class="alert alert-danger">
+                  <span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete all contact?</div>
+              </div>
+              <div class="modal-footer">
+                <a class="button" href="/deleteall">
+                  <span class="glyphicon glyphicon-ok-sign"></span> Yes</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                  <span class="glyphicon glyphicon-remove"></span> No</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div> 
-  <div class="row" style="padding-top: 205px; width: 100%; display: inline-block">
-    <div class="copyright">
+    <br>
+    <br>
+    <br>
+    <ul class="breadcrumb">
+      <li>
+        <a href="#" onclick="return myFunction();">Step 1:
+          <span>check username</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" onclick="return myFunction2();">Step 2:
+          <span>send sms</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">Funushed</a>
+      </li>
+    </ul>
+  </div>
+
+  <div id="myDIV4">
+    <div class="row" style="padding-top: 120px; width: 100%; display: inline-block">
+      <div class="copyright">
         <p style="color:black">Copyright &copy; 2017 | Developed by
           <a href="https://web.facebook.com/JIch01beer" target="_blank" style="color:orange">
             Jirayu Chinnawong </a>
-            <br>Information Technology | Faculty of Technology and Environment | 
-            Prince of Songkla University, Phuket Campus<br>
-            Email: jirayu_ch01@hotmail.com | Tel: (+66)95019-3878 |
-            Github: <a href="https://github.com/jirayuch01/" target="_blank" style="color:orange">  @jirayuch01  </a>
+          <br>Information Technology | Faculty of Technology and Environment | Prince of Songkla University, Phuket Campus
+          <br> Email: jirayu_ch01@hotmail.com | Tel: (+66)95019-3878 | Github:
+          <a href="https://github.com/jirayuch01/" target="_blank" style="color:orange"> @jirayuch01 </a>
         </p>
+      </div>
     </div>
-</div>
+  </div>
   <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="create" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </button>
           <h4 class="modal-title custom_align" id="Heading">Create new contact</h4>
         </div>
         <div class="modal-body">
           <form action="/create" method="post">
             <div class="form-group">
-              First Name <input class="form-control" type="text" id="first" name="first" required>
+              First Name
+              <input class="form-control" type="text" id="first" name="first" required>
             </div>
             <div class="form-group">
-              Last Name <input class="form-control" type="text" id="last" name="last" required>
+              Last Name
+              <input class="form-control" type="text" id="last" name="last" required>
             </div>
             <div class="form-group">
-              Telephone number <input class="form-control" type="text" id="tel" name="tel" required>
+              Telephone number
+              <input class="form-control" type="text" id="tel" name="tel" required>
             </div>
             <div class="form-group">
-              Message <textarea rows="2" class="form-control" id="meg" name="meg" required></textarea>
+              Mobile
+              <select class="form-control" id="mobile" name="mobile">
+                <option value="AIS" selected="selected">AIS</option>
+                <option value="Dtac">Dtac</option>
+                <option value="Truemove-H">Truemove-H</option>
+              </select>
+            </div>
+            <div class="form-group">
+              Message
+              <textarea rows="2" class="form-control" id="meg" name="meg" required></textarea>
             </div>
         </div>
         <div class="modal-footer ">
-          <button type="submit" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Create</button>
+          <button type="submit" class="btn btn-warning btn-lg" style="width: 100%;">
+            <span class="glyphicon glyphicon-ok-sign"></span> Create</button>
         </div>
         </form>
       </div>
     </div>
   </div>
+
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <script src="js/index2.js"></script>
+  <script language="JavaScript">
+    $(document).ready(function () {
+      $('body').on('click', '.use-sms', function () {
+        var HttPRequest = false;
+        HttPRequest = false;
+        if (window.XMLHttpRequest) {
+          HttPRequest = new XMLHttpRequest();
+        } else {
+          HttPRequest = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        if (!HttPRequest) {
+          alert('Cannot create XMLHTTP instance');
+          return false;
+        }
+        var SMSusername = document.getElementById("SMSusername").value;
+        var SMSpassword = document.getElementById("SMSpassword").value;
+        var force = document.getElementById("force").value;
+        var sender = document.getElementById("sender").value;
+        var ScheduledDelivery = document.getElementById("ScheduledDelivery").innerHTML;
+        var currentTR = $(this).closest('tr');
+        var msisdn = currentTR.find("span.msisdn").text();
+        var message = currentTR.find("span.message").text();
+        // alert(SMSusername + " / " + SMSpassword + " / " + force + " / " + sender + " / " + ScheduledDelivery + " / " + message + " / " + msisdn);
+        var url = 'http://www.thaibulksms.com/sms_api.php';
+        var pmeters = 'username=' + SMSusername + '&password=' + SMSpassword + '&msisdn=' + msisdn + '&message=' + message + '&sender=' + sender + '&ScheduledDelivery=' + ScheduledDelivery + '&force=' + force;
+        alert("Send SMS !!!");
+        HttPRequest.open('POST', url, true);
+        HttPRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        HttPRequest.setRequestHeader("Content-length", pmeters.length);
+        HttPRequest.setRequestHeader("Connection", "close");
+        HttPRequest.send(pmeters);
+        HttPRequest.onreadystatechange = function () {
+          if (HttPRequest.readyState == 3) {
+            document.getElementById("mySpan").innerHTML = "Now is Loading...";
+          }
+          if (HttPRequest.readyState == 4) {
+            if (HttPRequest.status == 200) {
+              var txt, xx, x, i;
+              var data_xml = HttPRequest.responseText;
+              if (BuildXMLFromString(data_xml)) {
+                if (window.DOMParser) {
+                  parser = new DOMParser();
+                  xmlDoc = parser.parseFromString(data_xml, "text/xml");
+                } else {
+                  xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+                  xmlDoc.async = false;
+                  xmlDoc.loadXML(data_xml);
+                }
+                var status = xmlDoc.getElementsByTagName("Status")[0].childNodes[0].nodeValue;
+                if (status == 1) {
+                  var msisdn = xmlDoc.getElementsByTagName("Msisdn")[0].childNodes[0].nodeValue;
+                  var UsedCredit = xmlDoc.getElementsByTagName("UsedCredit")[0].childNodes[0].nodeValue;
+                  var RemainCredit = xmlDoc.getElementsByTagName("RemainCredit")[0].childNodes[0].nodeValue;
+                  document.getElementById("mySpan").innerHTML = "Send to " + msisdn + " Success. Use Credit "
+                    + UsedCredit + " Credit, Credit Remain " + RemainCredit + " Credit.";
+                } else {
+                  var Detail = xmlDoc.getElementsByTagName("Detail")[0].childNodes[0].nodeValue;
+                  document.getElementById("mySpan").innerHTML = Detail;
+                }
+              }
+            } else {
+              document.getElementById("mySpan").innerHTML = "Can not connect Server !!!";
+            }
+          }
+        }
+
+        function CreateMSXMLDocumentObject() {
+          if (typeof (ActiveXObject) != "undefined") {
+            var progIDs = [
+              "Msxml2.DOMDocument.6.0",
+              "Msxml2.DOMDocument.5.0",
+              "Msxml2.DOMDocument.4.0",
+              "Msxml2.DOMDocument.3.0",
+              "MSXML2.DOMDocument",
+              "MSXML.DOMDocument"
+            ];
+            for (var i = 0; i < progIDs.length; i++) {
+              try {
+                return new ActiveXObject(progIDs[i]);
+              } catch (e) { };
+            }
+          }
+          return null;
+        }
+
+        function BuildXMLFromString(text) {
+          var message = "";
+          if (window.DOMParser) {
+            var parser = new DOMParser();
+            try {
+              xmlDoc = parser.parseFromString(text, "text/xml");
+            } catch (e) {
+              alert("XML parsing error.");
+              return false;
+            };
+          } else {
+            xmlDoc = CreateMSXMLDocumentObject();
+            if (!xmlDoc) {
+              alert("Cannot create XMLDocument object");
+              return false;
+            }
+            xmlDoc.loadXML(text);
+          }
+          var errorMsg = null;
+          if (xmlDoc.parseError && xmlDoc.parseError.errorCode != 0) {
+            errorMsg = "XML Parsing Error: " + xmlDoc.parseError.reason
+              + " at line " + xmlDoc.parseError.line
+              + " at position " + xmlDoc.parseError.linepos;
+          } else {
+            if (xmlDoc.documentElement) {
+              if (xmlDoc.documentElement.nodeName == "parsererror") {
+                errorMsg = xmlDoc.documentElement.childNodes[0].nodeValue;
+              }
+            }
+            else {
+              errorMsg = "XML Parsing Error!";
+            }
+          }
+          if (errorMsg) {
+            alert(errorMsg);
+            return false;
+          }
+          return true;
+        }
+      });
+    });
+
+    function myFunction() {
+      var x = document.getElementById("myDIV");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+      var y = document.getElementById("myDIV2");
+      if (y.style.display === "block") {
+        y.style.display = "none";
+      } else {
+        y.style.display = "block";
+      }
+    }
+    function myFunction2() {
+      var x = document.getElementById("myDIV");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+      var y = document.getElementById("myDIV2");
+      if (y.style.display === "block") {
+        y.style.display = "none";
+      } else {
+        y.style.display = "block";
+      }
+    }
+
+    var dateDiv = document.getElementById('ScheduledDelivery');
+    Object.defineProperty(Date.prototype, 'YYMMDDHHMM', {
+      value: function () {
+        function pad2(n) {  // always returns a string
+          return (n < 10 ? '0' : '') + n;
+        }
+        return this.getFullYear() +
+          pad2(this.getMonth() + 1) +
+          pad2(this.getDate()) +
+          pad2(this.getHours()) +
+          pad2(this.getMinutes());
+      }
+    });
+    dateDiv.innerHTML = new Date().YYMMDDHHMM();
+  </script>
 </body>
 
 </html>

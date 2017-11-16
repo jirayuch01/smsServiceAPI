@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SMS Service API</title>
+  <link rel="icon" type="image/x-icon" href="images/sms-icon-5460-16x16.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="images/sms-icon-5460-16x16.ico">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <script type="application/x-javascript">
+    addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+  </script>
+  <style>
+    #myDIV {
+      width: 100%;
+      padding: 50px 0;
+      text-align: center;
+      background-color: pink;
+      margin-top: 20px;
+    }
+
+    #myDIV2 {
+      width: 100%;
+      padding: 10px 0;
+      text-align: center;
+      background-color: azure;
+      margin-top: 20px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+  <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
+  <link href="css/style2.css" rel="stylesheet" type="text/css" media="all">
+  <link href="css/style4.css" rel="stylesheet" type="text/css" media="all">
+  <link rel="icon" type="image/x-icon" href="file/sms-icon-5460-16x16.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="file/sms-icon-5460-16x16.ico">
+  <link rel='stylesheet prefetch' href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
+  <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+          aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+          <img src="images/sms.png" style="width: 60px; height: 40px; margin: -8px;">
+        </a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li>
+            <a class="active" style="background-color: pink; color: black" href="/home">
+              <span class="glyphicon glyphicon-home"></span> Home</a>
+          </li>
+          <li class="dropdown hidden">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <span class="glyphicon glyphicon-phone"></span> SMS service
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">one person</li>
+              <li>
+                <a href="/user">SMS form</a>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">multiple person</li>
+              <li>
+                <a href="/upload">Upload file</a>
+              </li>
+              <li>
+                <a href="/show">Contact list</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="/contact">
+              <span class="glyphicon glyphicon-envelope"></span> Contact</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a class="hidden" href="/profile">
+              <span class="glyphicon glyphicon-user"></span> Profile</a>
+          </li>
+          <li>
+            <a href="/logout">
+              <span class="glyphicon glyphicon-log-in"></span> Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <br>
+  <div class="row">
+    <div class="col-6">
+      <div class="wrapper">
+        <div class="container">
+          <div id="myDIV">
+            <center>
+              <h1 style="color: brown">Please fill in the information.</h1>
+              <span>check the information before use.</span>
+            </center>
+          </div>
+          <br>
+          <br>
+          <div class="alert alert-success">
+            <strong>Message! </strong>
+            <span id="mySpan" style="color: red"></span>
+          </div>
+          <br>
+          <br>
+          <div class="row">
+            <div class="col-lg-6">
+              <img src="images/h1.jpg" style="width: 100%; height:0.5%">
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="modal-content col-lg-6">
+              <div class="modal-header">
+                <h4 class="modal-title custom_align" id="Heading">
+                  <b>
+                    Login SMS Service (Thaibulksms.com)</b>
+                </h4>
+              </div>
+              <div class="modal-body">
+                <form action="home" method="post" id="smsForm">
+                  <div class="form-group">
+                    Username
+                    <input class="form-control" type="text" id="SMSusername" name="SMSusername" value="" required>
+                  </div>
+                  <div class="form-group">
+                    Password
+                    <input class="form-control" type="password" id="SMSpassword" name="SMSpassword" value="" required>
+                  </div>
+                  <div class="form-group">
+                    Credit Type
+                    <select class="form-control" id="force" name="force">
+                      <option value="credit_remain" selected="selected">Standard</option>
+                      <option value="credit_remain_premium">Premium</option>
+                    </select>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <center>
+                  <button name="btnButton" id="btnButton" type="submit" class="btn btn-primary btn-lg" onClick="JavaScript:doCallAjax();" style="width: 100%;">
+                    <span class="glyphicon glyphicon-ok-sign"></span> Check</button>
+                  <br>
+                </center>
+                </form>
+              </div>
+            </div>
+          </div>
+          <h3 style="float: right"> credit:
+            <a href="https://www.secure.thaibulksms.com" target="_blank" style="color:orange"> Thaibulksms.com </a>
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="myDIV2">
+    <div class="row" style="padding-top: 120px; width: 100%; display: inline-block">
+      <div class="copyright">
+        <p style="color:black">Copyright &copy; 2017 | Developed by
+          <a href="https://web.facebook.com/JIch01beer" target="_blank" style="color:orange">
+            Jirayu Chinnawong </a>
+          <br>Information Technology | Faculty of Technology and Environment | Prince of Songkla University, Phuket Campus
+          <br> Email: jirayu_ch01@hotmail.com | Tel: (+66)95019-3878 | Github:
+          <a href="https://github.com/jirayuch01/" target="_blank" style="color:orange"> @jirayuch01 </a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src="js/index2.js"></script>
+  <script language="JavaScript">
+    $('input[type="file"]').inputfile({
+      uploadText: '<span class="glyphicon glyphicon-upload"></span> Select a file',
+      removeText: '<span class="glyphicon glyphicon-trash"></span>',
+      restoreText: '<span class="glyphicon glyphicon-remove"></span>',
+      uploadButtonClass: 'btn btn-primary',
+      removeButtonClass: 'btn btn-default'
+    });
+    $(document).ready(function () {
+      $(form).on('submit', function () {
+        location.reload();
+      });
+    })
+    var HttPRequest = false;
+    function doCallAjax() {
+      HttPRequest = false;
+      if (window.XMLHttpRequest) {
+        HttPRequest = new XMLHttpRequest();
+        if (HttPRequest.overrideMimeType) {
+          HttPRequest.overrideMimeType('text/html');
+        }
+      } else if (window.ActiveXObject) {
+        try {
+          HttPRequest = new ActiveXObject("Msxml2.XMLHTTP");
+        } catch (e) {
+          try {
+            HttPRequest = new ActiveXObject("Microsoft.XMLHTTP");
+          } catch (e) { }
+        }
+      }
+      var SMSusername = document.getElementById("SMSusername").value;
+      var SMSpassword = document.getElementById("SMSpassword").value;
+      var force = document.getElementById("force").value;
+      var url = 'http://www.thaibulksms.com/sms_api.php';
+      var pmeters = 'username=' + SMSusername + '&password=' + SMSpassword + '&tag=' + force;
+      HttPRequest.open('POST', url, true);
+      HttPRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      HttPRequest.setRequestHeader("Content-length", pmeters.length);
+      HttPRequest.setRequestHeader("Connection", "close");
+      HttPRequest.send(pmeters);
+      HttPRequest.onreadystatechange = function () {
+        if (HttPRequest.readyState == 3) {
+          document.getElementById("mySpan").innerHTML = "Now is Loading...";
+        }
+        if (HttPRequest.readyState == 4) {
+          if (HttPRequest.status == 200) {
+            document.getElementById("mySpan").innerHTML = "Correct information, You can send " + HttPRequest.responseText + " messages.";
+          } else {
+            document.getElementById("mySpan").innerHTML = "Can not connect Server";
+          }
+        }
+      }
+    }
+
+    $('#smsForm').on('submit', function (e) {
+      var form = this;
+      setTimeout(function () {
+        form.submit();
+        window.location.href = '/user';
+      }, 3000);
+      return false;
+    });
+  </script>
+</body>
+
+</html>

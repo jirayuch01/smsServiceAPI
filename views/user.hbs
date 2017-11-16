@@ -8,6 +8,7 @@
     <link rel="icon" type="image/x-icon" href="images/sms-icon-5460-16x16.ico">
     <link rel="shortcut icon" type="image/x-icon" href="images/sms-icon-5460-16x16.ico">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="css/cursor.css">
     <script type="application/x-javascript">
     addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
@@ -20,6 +21,26 @@
     <style>
         body {
             background-color: orange;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #myDIV {
+            width: 100%;
+            padding: 50px 0;
+            text-align: center;
+            background-color: pink;
+            margin-top: 20px;
+        }
+
+        #myDIV2 {
+            width: 100%;
+            padding: 10px 0;
+            text-align: center;
+            background-color: azure;
+            margin-top: 20px;
         }
     </style>
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
@@ -46,13 +67,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/home">
+                <a class="navbar-brand" href="#">
                     <img src="images/sms.png" style="width: 60px; height: 40px; margin: -8px;">
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>
+                    <li class="hidden">
                         <a class="active" href="/home">
                             <span class="glyphicon glyphicon-home"></span> Home</a>
                     </li>
@@ -73,7 +94,7 @@
                                 <a href="/upload">Upload file</a>
                             </li>
                             <li>
-                               <a href="/show">Contact list</a>
+                                <a href="/show">Contact list</a>
                             </li>
                         </ul>
                     </li>
@@ -100,13 +121,15 @@
         <div class="col-6">
             <div class="wrapper">
                 <div class="container">
-                    <center>
-                        <h1 style="color: brown">Please fill in the information.</h1>
-                    </center>
+                    <div id="myDIV">
+                        <center>
+                            <h1 style="color: brown">Please fill in the information.</h1>
+                        </center>
+                    </div>
                     <br>
                     <div class="alert alert-info">
                         <strong>Message! </strong>
-                        <span id="mySpan"></span>
+                        <span id="mySpan" style="color: red"></span>
                     </div>
                     <br>
                     <div class="row">
@@ -128,14 +151,21 @@
                                 </h4>
                             </div>
                             <div class="modal-body">
-                                <div class="form-group">
-                                    Username
+                                Username
+                                <div class="input-group">
                                     <input class="form-control" type="text" id="SMSusername" name="SMSusername" value="{{user}}" readonly>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-primary" id="btnEditU"> edit </button>
+                                    </span>
                                 </div>
-                                <div class="form-group">
-                                    Password
+                                <br> Password
+                                <div class="input-group">
                                     <input class="form-control" type="password" id="SMSpassword" name="SMSpassword" value="{{pass}}" readonly>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-primary" id="btnEditP"> edit </button>
+                                    </span>
                                 </div>
+                                <br>
                                 <div class="form-group">
                                     Credit Type
                                     <select class="form-control" id="force" name="force">
@@ -149,7 +179,7 @@
                                         <option value="THAIBULKSMS" selected="selected">THAIBULKSMS</option>
                                     </select>
                                 </div>
-                                <div id="ScheduledDelivery" style="visibility: hidden;"></div>
+                                <div id="ScheduledDelivery" style="display: none;"></div>
                                 <div class="form-group">
                                     Phone Number
                                     <input class="form-control" type="text" id="msisdn" name="msisdn" value="" required>
@@ -186,15 +216,18 @@
             </div>
         </div>
     </div>
-    <div class="row" style="padding-top: 205px; width: 100%; display: inline-block">
-        <div class="copyright">
-            <p style="color:black">Copyright &copy; 2017 | Developed by
-                <a href="https://web.facebook.com/JIch01beer" target="_blank" style="color:orange">
-                    Jirayu Chinnawong </a>
-                <br>Information Technology | Faculty of Technology and Environment | Prince of Songkla University, Phuket Campus
-                <br> Email: jirayu_ch01@hotmail.com | Tel: (+66)95019-3878 | Github:
-                <a href="https://github.com/jirayuch01/" target="_blank" style="color:orange"> @jirayuch01 </a>
-            </p>
+    <div id="myDIV2">
+        <div class="row" style="padding-top: 120px; width: 100%; display: inline-block">
+            <div class="copyright">
+                <p style="color:black">Copyright &copy; 2017 | Developed by
+                    <a href="https://web.facebook.com/JIch01beer" target="_blank" style="color:orange">
+                        Jirayu Chinnawong </a>
+                    <br>Information Technology | Faculty of Technology and Environment | Prince of Songkla University, Phuket
+                    Campus
+                    <br> Email: jirayu_ch01@hotmail.com | Tel: (+66)95019-3878 | Github:
+                    <a href="https://github.com/jirayuch01/" target="_blank" style="color:orange"> @jirayuch01 </a>
+                </p>
+            </div>
         </div>
     </div>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
@@ -218,7 +251,7 @@
             var message = document.getElementById("message").value;
             var sender = document.getElementById("sender").value;
             var force = document.getElementById("force").value;
-            var ScheduledDelivery = document.getElementById("ScheduledDelivery").value;
+            var ScheduledDelivery = document.getElementById("ScheduledDelivery").innerHTML;
             var url = 'http://www.thaibulksms.com/sms_api.php';
             var pmeters = 'username=' + SMSusername + '&password=' + SMSpassword + '&msisdn=' + msisdn + '&message=' + message + '&sender=' + sender + '&ScheduledDelivery=' + ScheduledDelivery + '&force=' + force;
             HttPRequest.open('POST', url, true);
@@ -335,8 +368,16 @@
             }
         });
         dateDiv.innerHTML = new Date().YYMMDDHHMM();
-    </script>
 
+        $(document).ready(function () {
+            $('#btnEditU').click(function () {
+                $("input[name='SMSusername']").removeAttr("readonly");
+            });
+            $('#btnEditP').click(function () {
+                $("input[name='SMSpassword']").removeAttr("readonly");
+            });
+        });
+    </script>
 </body>
 
 </html>
