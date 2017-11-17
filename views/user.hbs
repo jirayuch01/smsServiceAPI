@@ -252,12 +252,12 @@
             var sender = document.getElementById("sender").value;
             var force = document.getElementById("force").value;
             var ScheduledDelivery = document.getElementById("ScheduledDelivery").innerHTML;
-            var url = 'http://www.thaibulksms.com/sms_api.php';
+            var url = 'https://www.thaibulksms.com/sms_api.php';
             var pmeters = 'username=' + SMSusername + '&password=' + SMSpassword + '&msisdn=' + msisdn + '&message=' + message + '&sender=' + sender + '&ScheduledDelivery=' + ScheduledDelivery + '&force=' + force;
             HttPRequest.open('POST', url, true);
             HttPRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            HttPRequest.setRequestHeader("Content-length", pmeters.length);
-            HttPRequest.setRequestHeader("Connection", "close");
+            //HttPRequest.setRequestHeader("Content-length", pmeters.length);
+            //HttPRequest.setRequestHeader("Connection", "close");
             HttPRequest.send(pmeters);
             HttPRequest.onreadystatechange = function () {
                 if (HttPRequest.readyState == 3) {

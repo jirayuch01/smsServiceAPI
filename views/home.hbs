@@ -204,7 +204,7 @@
       removeButtonClass: 'btn btn-default'
     });
     $(document).ready(function () {
-      $(form).on('submit', function () {
+      $('#smsForm').on('submit', function (e) {
         location.reload();
       });
     })
@@ -228,12 +228,12 @@
       var SMSusername = document.getElementById("SMSusername").value;
       var SMSpassword = document.getElementById("SMSpassword").value;
       var force = document.getElementById("force").value;
-      var url = 'http://www.thaibulksms.com/sms_api.php';
+      var url = 'https://www.thaibulksms.com/sms_api.php';
       var pmeters = 'username=' + SMSusername + '&password=' + SMSpassword + '&tag=' + force;
       HttPRequest.open('POST', url, true);
       HttPRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      HttPRequest.setRequestHeader("Content-length", pmeters.length);
-      HttPRequest.setRequestHeader("Connection", "close");
+      //HttPRequest.setRequestHeader("Content-length", pmeters.length);
+      //HttPRequest.setRequestHeader("Connection", "close");
       HttPRequest.send(pmeters);
       HttPRequest.onreadystatechange = function () {
         if (HttPRequest.readyState == 3) {
@@ -253,7 +253,6 @@
       var form = this;
       setTimeout(function () {
         form.submit();
-  
       }, 1500);
       return false;
     });

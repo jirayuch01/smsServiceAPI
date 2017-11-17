@@ -2,8 +2,8 @@
 Project with NodeJS / Express / MongoDB <br>
 
 # Page
-Homepage: https://sms-services.herokuapp.com/ <br>
-Git: https://git.heroku.com/sms-services.git <br>
+Homepage: https://sms-serviceapi.herokuapp.com/ <br>
+Git: https://git.heroku.com/sms-serviceapi.git <br>
 or https://github.com/jirayuch01/smsServiceAPI <br>
 mongoDB: https://mlab.com/databases/smsservice <br>
 
