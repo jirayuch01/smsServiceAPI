@@ -14,7 +14,7 @@ const { MongoClient, ObjectID } = require('mongodb');
 
 //mongodb://Beerkurai1412:nanoha1412@ds111336.mlab.com:11336/smsservice
 //MongoClient.connect('mongodb://localhost:27017/forAuth', (err, db) => {
-MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds111336.mlab.com:11336/smsservice', (err, db) => {
+MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds113046.mlab.com:13046/smsservice', (err, db) => {
   if (err) {
     return console.log('Unable to connect to MongoDB server');
   }
@@ -175,7 +175,7 @@ router.get('/show', function (req, res, next) {
   var data = req.session.userId;
   User.findById(req.session.userId).exec(function (error, user) {
     if (data != null && data != undefined) {
-      MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds111336.mlab.com:11336/smsservice', (err, db) => {
+      MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds113046.mlab.com:13046/smsservice', (err, db) => {
         if (err) { console.log(err); throw err; }
         data = '';
         db.collection('test').find().toArray(function (err, docs) {
@@ -196,7 +196,7 @@ router.get('/show', function (req, res, next) {
     if (data != null && data != undefined) {
       var resultArray = [];
       var first = req.body.search;
-      MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds111336.mlab.com:11336/smsservice', (err, db) => {
+      MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds113046.mlab.com:13046/smsservice', (err, db) => {
         assert.equal(null, err);
         var cursor = db.collection('test').find({
           first: new RegExp(req.body.search)
@@ -229,7 +229,7 @@ router.get('/show', function (req, res, next) {
     if (data != null && data != undefined) {
       var resultArray = [];
       var last = req.body.search;
-      MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds111336.mlab.com:11336/smsservice', (err, db) => {
+      MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds113046.mlab.com:13046/smsservice', (err, db) => {
         assert.equal(null, err);
         var cursor = db.collection('test').find({
           last: new RegExp(req.body.search)
@@ -262,7 +262,7 @@ router.get('/show', function (req, res, next) {
     if (data != null && data != undefined) {
       var resultArray = [];
       var tel = req.body.search;
-      MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds111336.mlab.com:11336/smsservice', (err, db) => {
+      MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds113046.mlab.com:13046/smsservice', (err, db) => {
         assert.equal(null, err);
         var cursor = db.collection('test').find({
           tel: new RegExp(req.body.search)
@@ -295,7 +295,7 @@ router.get('/show', function (req, res, next) {
     if (data != null && data != undefined) {
       var resultArray = [];
       var meg = req.body.search;
-      MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds111336.mlab.com:11336/smsservice', (err, db) => {
+      MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds113046.mlab.com:13046/smsservice', (err, db) => {
         assert.equal(null, err);
         var cursor = db.collection('test').find({
           meg: new RegExp(req.body.search)
@@ -328,7 +328,7 @@ router.get('/show', function (req, res, next) {
     if (data != null && data != undefined) {
       var resultArray = [];
       var meg = req.body.search;
-      MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds111336.mlab.com:11336/smsservice', (err, db) => {
+      MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds113046.mlab.com:13046/smsservice', (err, db) => {
         assert.equal(null, err);
         var cursor = db.collection('test').find({
           meg: new RegExp(req.body.search)
@@ -386,7 +386,7 @@ router.post('/show', function (req, res) {
         if (err) {
           return res.json({ error_code: 1, err_desc: err, data: null });
         }
-        MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds111336.mlab.com:11336/smsservice', (err, db) => {
+        MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds113046.mlab.com:13046/smsservice', (err, db) => {
           if (err) { console.log(err); throw err; }
           fs.readFile('public/outputs/output.json', 'utf8', function (err, data) {
             if (err) throw err;
@@ -424,7 +424,7 @@ router.post('/home', (req, res) => {
     SMSusername: req.body.SMSusername,
     SMSpassword: req.body.SMSpassword
   };
-  MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds111336.mlab.com:11336/smsservice', (err, db) => {
+  MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds113046.mlab.com:13046/smsservice', (err, db) => {
     assert.equal(null, err);
     db.collection('sms').update({ SMSusername: req.body.SMSusername }, { $set: item }, { upsert: true }, function (err, result) {
       assert.equal(null, err);
@@ -444,7 +444,7 @@ router.get('/user', function (req, res, next) {
         if (user === null) {
           return res.render('errorAuthorized.hbs');
         } else {
-          MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds111336.mlab.com:11336/smsservice', (err, db) => {
+          MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds113046.mlab.com:13046/smsservice', (err, db) => {
             db.collection("sms").findOne({}, function (err, result) {
               if (err) throw err;
               db.close();
@@ -468,7 +468,7 @@ router.get('/profile', function (req, res, next) {
         if (user === null) {
           return res.render('errorAuthorized.hbs');
         } else {
-          MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds111336.mlab.com:11336/smsservice', (err, db) => {
+          MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds113046.mlab.com:13046/smsservice', (err, db) => {
             db.collection("sms").findOne({}, function (err, result) {
               if (err) throw err;
               db.close();
@@ -517,7 +517,7 @@ router.post('/create', (req, res) => {
     mobile: req.body.mobile,
     meg: req.body.meg
   };
-  MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds111336.mlab.com:11336/smsservice', (err, db) => {
+  MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds113046.mlab.com:13046/smsservice', (err, db) => {
     assert.equal(null, err);
     db.collection('test').update({ tel: req.body.tel }, { $set: item }, { upsert: true }, function (err, result) {
       assert.equal(null, err);
@@ -533,7 +533,7 @@ router.get('/send/:id', function (req, res, next) {
   var id = req.params.id;
   User.findById(req.session.userId).exec(function (error, user) {
     if (data != null && data != undefined) {
-      MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds111336.mlab.com:11336/smsservice', (err, db) => {
+      MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds113046.mlab.com:13046/smsservice', (err, db) => {
         if (err) { console.log(err); throw err; }
         data = '';
         db.collection('test').findOne({
@@ -558,7 +558,7 @@ router.get('/fetchdata/:id', function (req, res, next) {
   var id = req.params.id;
   User.findById(req.session.userId).exec(function (error, user) {
     if (data != null && data != undefined) {
-      MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds111336.mlab.com:11336/smsservice', (err, db) => {
+      MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds113046.mlab.com:13046/smsservice', (err, db) => {
         if (err) { console.log(err); throw err; }
         data = '';
         db.collection('test').findOne({
@@ -607,7 +607,7 @@ router.post('/search', function (req, res, next) {
 });
 
 router.post('/edit', (req, res) => {
-  MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds111336.mlab.com:11336/smsservice', (err, db) => {
+  MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds113046.mlab.com:13046/smsservice', (err, db) => {
     db.collection('test').findOneAndUpdate({
       _id: new ObjectID(req.body._id)
     }, {
@@ -628,7 +628,7 @@ router.post('/edit', (req, res) => {
 
 router.get('/delete/:id', function (req, res, next) {
   var id = req.params.id;
-  MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds111336.mlab.com:11336/smsservice', (err, db) => {
+  MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds113046.mlab.com:13046/smsservice', (err, db) => {
     db.collection('test').findOneAndDelete({
       _id: new ObjectID(id)
     }, function (err, result) {
@@ -640,7 +640,7 @@ router.get('/delete/:id', function (req, res, next) {
 });
 
 router.get('/deleteall', function (req, res, next) {
-  MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds111336.mlab.com:11336/smsservice', (err, db) => {
+  MongoClient.connect('mongodb://Beerkurai1412:nanoha1412@ds113046.mlab.com:13046/smsservice', (err, db) => {
     db.collection('test').remove({}, function (err, removed) {
       res.redirect('/show');
       db.close();

@@ -1,53 +1,54 @@
 {
   "name": "smsServiceAPI",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "private": true,
-  "scripts": {
-    "start": "nodemon server.js"
-  },
+  "description": "Project with NodeJS / Express / MongoDB <br>",
   "dependencies": {
     "assert": "^1.4.1",
     "async": "^2.6.0",
-    "bcrypt": "^1.0.2",
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^1.3.2",
     "crypto": "^1.0.1",
     "dialog": "^0.3.1",
-    "express": "^4.15.4",
+    "express": "^4.16.2",
     "express-fileupload": "^0.2.0",
     "express-paginate": "^0.3.0",
-    "express-session": "^1.15.2",
+    "express-session": "^1.15.6",
     "hbs": "^4.0.1",
     "intellisms": "^0.1.2",
-    "mongodb": "^2.2.31",
-    "mongoose": "^4.10.8",
-    "monk": "^6.0.4",
-    "morgan": "^1.8.2",
+    "mongodb": "^2.2.33",
+    "mongoose": "^4.13.3",
+    "monk": "^6.0.5",
+    "morgan": "^1.9.0",
     "multer": "^1.3.0",
-    "nodemon": "^1.11.0",
+    "nodemon": "^1.12.1",
     "pagination": "^0.4.4",
     "readfile": "^1.0.1",
     "xls-to-json-lc": "^0.3.4",
     "xlsx-to-json-lc": "^0.5.0",
-    "xml2js": "^0.4.19"
+    "xmljs": "^0.3.2"
   },
-  "description": "Project with NodeJS / Express / MongoDB <br>",
-  "keywords": [
-    "express",
-    "mongoDB",
-    "heroku"
-  ],
   "devDependencies": {
     "nodemon": "^1.12.1"
   },
   "engines": {
     "node": "8.4.0"
   },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jirayuch01/smsServiceAPI.git"
   },
+  "keywords": [
+    "express",
+    "mongoDB",
+    "heroku"
+  ],
   "author": "Jirayu Chinnawong",
   "license": "ISC",
   "bugs": {

@@ -9,7 +9,7 @@ var morgan = require('morgan');
 var fs = require('fs');
 
 //mongoose.connect('mongodb://localhost/forAuth');
-mongoose.connect('mongodb://Beerkurai1412:nanoha1412@ds111336.mlab.com:11336/smsservice', {useMongoClient: true});
+mongoose.connect('mongodb://Beerkurai1412:nanoha1412@ds113046.mlab.com:13046/smsservice', {useMongoClient: true});
 mongoose.connection.on('error', console.error.bind(console, 'Connection error:'));
 
 var db = mongoose.connection;
@@ -46,6 +46,6 @@ app.use(function (err, req, res, next) {
   res.send(err.message);
 });
 
-app.listen(3000, function () {
+app.listen(process.env.PORT || 3000, function () {
   console.log('Server app listening on port 3000');
 });
